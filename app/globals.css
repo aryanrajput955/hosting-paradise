@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-green);
+  overflow-x: hidden;
+}
+
+:root {
+  --ocean-blue: #0077B6;
+  --sunset-orange: #FF6F61;
+  --sandy: #F4E9CD;
+  --forest-green: #4CAF50;
+  --coral-pink: #FF7F50;
+  --gold: #FFD700;
+  --white: #FFFFFF;
+  --light-blue:#cdebf4;
+  --color-dark: #00453a;
+  --light-green:#F1FDF3;
+}
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  color:var(--coral-pink);
+}
+
+.swiper-pagination-bullet-active {
+  background-color:var(--color-dark) !important;
+
+}
+
+.swiper-pagination-bullet {
+  background-color:var(--color-dark) !important;
+
+}
+
+
+@font-face {
+  font-family: 'Higher Jump';
+  src: url('/fonts/Higher Jump.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'kirsen';
+  src: url('/fonts/KirensBrushDemoRegular-OV2ed.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'salazur';
+  src: url('/fonts/Salazur.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'jost';
+  src: url('/fonts/Jost-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+header{
+  font-family: jost;
+  font-weight:400;
+  font-size: large;
+}
+p{
+  font-family: jost;
+  font-weight:400;
+  font-size: medium;
+  
+}
+
+@layer components {
+  .group {
+    /* aspect-ratio: 16/9; Default aspect ratio for mobile */
+    position: relative; /* Ensure proper positioning for the Image component */
+  }
+
+  @media (min-width: 768px) {
+    .group {
+      aspect-ratio: unset; /* Remove aspect ratio constraint on tablet/desktop */
+    }
+    
+    /* Maintain specific card sizes on desktop */
+    .group.md\:row-span-2 {
+      height: 100%;
+    }
+    
+    .group.md\:row-span-1 {
+      height: 50%;
+    }
+  }
+
+  /* Ensure images fill their containers properly */
+  .group .next-image-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (min-width: 639px) and (max-width: 767px) {
+  .custom-width {
+    width: 608px !important; /* Use !important to ensure it overrides other styles */
+  }
+}
+.aryan{
+  width: 100%!important;
+}
