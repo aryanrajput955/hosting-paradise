@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -138,13 +139,13 @@ export default function InternationalSlider() {
                     className="relative rounded-none md:rounded-xl overflow-hidden shadow-2xl h-[220px] sm:h-[260px] md:h-[420px] lg:h-[520px] xl:h-[360px]"
                     style={{ height: dynamicHeight }}
                   >
-                    <img
+                    <Image
                       ref={(el) => { imgRefs.current[index] = el; }}
                       src={banner.image}
                       alt={banner.alt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
                     />
                   </div>
                 </Link>

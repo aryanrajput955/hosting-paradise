@@ -1,5 +1,6 @@
   'use client';
   import React from 'react';
+  import Image from 'next/image';
   import { Swiper, SwiperSlide } from 'swiper/react';
   import { Autoplay, Pagination } from 'swiper/modules';
   import 'swiper/css';
@@ -38,20 +39,26 @@
                 <div className="relative w-full">
                   {/* Mobile Banner */}
                   <div className="block md:hidden">
-                    <img
-                      className="w-full h-auto object-cover"
+                    <Image
+                      className="object-cover"
                       src={banner.src}
                       alt={banner.alt}
-                      loading="lazy"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
                     />
                   </div>
                   {/* Desktop Banner */}
                   <div className="hidden md:block">
-                    <img
-                      className="w-full h-auto object-cover"
+                    <Image
+                      className="object-cover"
                       src={banner.src}
                       alt={banner.alt}
-                      loading="lazy"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
                     />
                   </div>
                 </div>

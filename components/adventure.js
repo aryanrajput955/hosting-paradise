@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -46,11 +47,12 @@ export default function AdventureTours() {
     <div className="group bg-white rounded-lg shadow-lg p-3 md:p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
 
       {/* ✅ Smaller Image on Mobile */}
-      <div className="w-full h-[140px] md:h-[210px] overflow-hidden rounded-lg mb-3 md:mb-4">
-        <img
+      <div className="w-full h-[140px] md:h-[210px] relative overflow-hidden rounded-lg mb-3 md:mb-4">
+        <Image
           src={item.img}
           alt={item.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
       </div>
 

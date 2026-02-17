@@ -63,7 +63,7 @@ const ImageGallery = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Large Nature Image - Kashmir */}
           <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-lg group aspect-square">
-              <Image src="/img/banner/Kashmir.png" alt="Kashmir" layout="fill" objectFit="cover" className="transition-transform duration-300 group-hover:scale-105" />
+              <Image src="/img/banner/Kashmir.png" alt="Kashmir" fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
             <Link href="/destinations/kashmir">
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="absolute inset-0">
@@ -82,9 +82,8 @@ const ImageGallery = () => {
                 <Image
                   src={`/${place.image}`}
                   alt={place.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               <Link href={place.link}>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -104,9 +103,8 @@ const ImageGallery = () => {
               <Image
                 src="/img/banner/Himachal.png"
                 alt="Himachal"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-300 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             <Link href="/destinations/himachal">
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>

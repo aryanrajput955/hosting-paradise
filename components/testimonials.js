@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Image from 'next/image';
 
 const testimonials = [
   { 
@@ -107,11 +108,12 @@ export default function TestimonialSlider() {
               {/* Added a fixed height (h-[400px]) and flex layout for equal card height */}
               <div className="bg-[#EAF6F6] rounded-lg shadow-md p-6 text-center h-[400px] flex flex-col justify-between">
                 {/* User Image */}
-                <div className="w-16 h-16 mx-auto mb-4">
-                  <img
+                <div className="relative w-16 h-16 mx-auto mb-4">
+                  <Image
+                    fill
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-full h-full shadow-lg rounded-full object-cover"
+                    className="shadow-lg rounded-full object-cover"
                   />
                 </div>
 

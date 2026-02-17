@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-8">
           {/* Logo */}
-          <img
+          <Image
             src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/logo.png"
             alt="Paradise Bliss"
             width={200}
@@ -19,7 +20,7 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-6 mb-10">
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/twitter.png"
                 alt="X (Twitter)"
                 width={30}
@@ -28,7 +29,7 @@ const Footer = () => {
               />
             </a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/fb.png"
                 alt="Facebook"
                 width={30}
@@ -37,7 +38,7 @@ const Footer = () => {
               />
             </a>
             <a href="https://www.instagram.com/paradiseblisstours?igsh=YXZpaHE3ZHBxZ3gy" target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/instagram2.png"
                 alt="Instagram"
                 width={30}
@@ -46,7 +47,7 @@ const Footer = () => {
               />
             </a>
             <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/whatsapp1.png"
                 alt="WhatsApp"
                 width={30}
@@ -55,7 +56,7 @@ const Footer = () => {
               />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <img
+              <Image
                 src="https://raw.githubusercontent.com/aryanrajput955/icons_paradise/refs/heads/main/linkedin.png"
                 alt="LinkedIn"
                 width={30}

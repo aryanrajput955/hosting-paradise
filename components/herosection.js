@@ -1,11 +1,18 @@
 'use client'
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen h-screen flex items-center justify-center bg-cover bg-center px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12"
-      style={{ backgroundImage: "url('/img/shoot/pexels-quang-nguyen-vinh-2132174.jpeg')" }}
+      className="relative min-h-screen h-screen flex items-center justify-center px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12"
     >
+      <Image
+        src="/img/shoot/pexels-quang-nguyen-vinh-2132174.jpeg"
+        alt="Background"
+        fill
+        className="object-cover object-center -z-10"
+        priority
+      />
       {/* Translucent black overlay */}
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
@@ -63,44 +70,44 @@ export default function HeroSection() {
         {/* Section Beneath the Search Bar */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2.5 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 text-center text-white w-full max-w-6xl px-1 xs:px-2">
           <div className="flex flex-col items-center">
-            <img 
+            <Image 
               src="/img/location.png" 
               alt="Destination Icon"
-              loading="eager"
-              decoding="sync"
+              width={56}
+              height={56}
               className="mb-1.5 xs:mb-2 sm:mb-2.5 md:mb-3 lg:mb-3.5 xl:mb-4 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 mx-auto object-contain" 
             />
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold mb-0.5 xs:mb-1">100+</h2>
             <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-tight">Destinations</p>
           </div>
           <div className="flex flex-col items-center">
-            <img 
+            <Image 
               src="/img/smile.png" 
               alt="Happy Travelers Icon"
-              loading="eager"
-              decoding="sync"
+              width={56}
+              height={56}
               className="mb-1.5 xs:mb-2 sm:mb-2.5 md:mb-3 lg:mb-3.5 xl:mb-4 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 mx-auto object-contain" 
             />
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold mb-0.5 xs:mb-1">50K+</h2>
             <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-tight">Happy Travelers</p>
           </div>
           <div className="flex flex-col items-center">
-            <img 
+            <Image 
               src="/img/star.png" 
               alt="Ratings Icon"
-              loading="eager"
-              decoding="sync"
+              width={56}
+              height={56}
               className="mb-1.5 xs:mb-2 sm:mb-2.5 md:mb-3 lg:mb-3.5 xl:mb-4 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 mx-auto object-contain" 
             />
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold mb-0.5 xs:mb-1">4.8/5</h2>
             <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-tight">Ratings</p>
           </div>
           <div className="flex flex-col items-center">
-            <img 
+            <Image 
               src="/img/real-estate.png" 
               alt="EMI Options Icon"
-              loading="eager"
-              decoding="sync"
+              width={56}
+              height={56}
               className="mb-1.5 xs:mb-2 sm:mb-2.5 md:mb-3 lg:mb-3.5 xl:mb-4 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 mx-auto object-contain" 
             />
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold mb-0.5 xs:mb-1">No Cost</h2>

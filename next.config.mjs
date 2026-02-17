@@ -9,7 +9,7 @@ const nextConfig = {
 				pathname: '/aryanrajput955/icons_paradise/**',
 			},
 		],
-		unoptimized: true,
+		
 	},
 	// output: "export",
 	trailingSlash: true,

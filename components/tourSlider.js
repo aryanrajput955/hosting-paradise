@@ -9,6 +9,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Sample tour data
 const tours = [
@@ -173,17 +174,18 @@ export default function ToursSlider() {
                   }}
                   className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 h-full"
                 >
-                  <img
-                    height={400}
-                    width={400}
-                    src={tour.image}
-                    alt={tour.title}
-                    className="w-full h-56 object-cover rounded-t-xl"
-                    onError={(e) => {
-                      console.error(`Failed to load image: ${tour.image}`);
-                      e.target.src = '/img/placeholder.jpg'; // Fallback image if loading fails
-                    }}
-                  />
+                  <div className="relative w-full h-56">
+                    <Image
+                      fill
+                      src={tour.image}
+                      alt={tour.title}
+                      className="object-cover rounded-t-xl"
+                      onError={(e) => {
+                        console.error(`Failed to load image: ${tour.image}`);
+                        e.target.src = '/img/placeholder.jpg'; // Fallback image if loading fails
+                      }}
+                    />
+                  </div>
                   <div className="p-6">
                   <Link href={tour.link} passHref>
                     <h3 className="text-xl font-bold text-gray-900">{tour.title}</h3>
@@ -256,13 +258,14 @@ export default function ToursSlider() {
             </button>
             {selectedTour && (
               <div className="mb-4">
-                <img
-                  height={400}
-                  width={400}
-                  src={selectedTour.image}
-                  alt={selectedTour.title}
-                  className="w-full h-32 object-cover rounded-lg"
-                />
+                <div className="relative w-full h-32">
+                  <Image
+                    fill
+                    src={selectedTour.image}
+                    alt={selectedTour.title}
+                    className="object-cover rounded-lg"
+                  />
+                </div>
                 <h3 className="mt-3 text-lg font-bold text-gray-900">
                   {selectedTour.title}
                 </h3>

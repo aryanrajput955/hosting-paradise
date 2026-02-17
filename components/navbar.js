@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -105,7 +106,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-8">
               <div className="logo">
                 <Link href="/">
-                  <img src="/img/logo.png" alt="Paradise Bliss" className="h-10 lg:h-11 xl:h-12" />
+                  <Image src="/img/logo.png" alt="Paradise Bliss" width={200} height={50} className="h-10 w-auto lg:h-11 xl:h-12" />
                 </Link>
               </div>
               <div className="contact">
@@ -219,7 +220,7 @@ export default function Navbar() {
           {/* Mobile/Tablet Layout */}
           <div className="flex mt-2 items-center justify-between w-full lg:hidden">
             <div className="logo">
-              <img src="/img/logo.png" alt="Paradise Bliss" className="h-8 sm:h-10 md:h-12" />
+              <Image src="/img/logo.png" alt="Paradise Bliss" width={150} height={40} className="h-8 w-auto sm:h-10 md:h-12" />
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <a href="tel:+918449000181" className="text-black">
@@ -288,7 +289,7 @@ export default function Navbar() {
               <div className="fixed top-0 mt-6 left-0 h-screen w-[85%] sm:w-4/5 md:w-3/5 bg-[#E4DECF] shadow-2xl transform transition-transform duration-300 ease-in-out z-50 lg:hidden overflow-y-auto">
                 {/* Menu Header */}
                 <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-300">
-                  <img src="/img/logo.png" alt="Paradise Bliss" className="h-10 sm:h-12" />
+                  <Image src="/img/logo.png" alt="Paradise Bliss" width={150} height={40} className="h-10 w-auto sm:h-12" />
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="p-2 hover:bg-gray-200 rounded-lg transition-colors"

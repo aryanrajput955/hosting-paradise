@@ -6,6 +6,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ImageGalleryMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -78,10 +79,11 @@ const ImageGalleryMobile = () => {
 
   const renderCard = (place) => (
     <div className="relative overflow-hidden rounded-2xl my-10 shadow-lg group aspect-square">
-      <img
+      <Image
         src={`/${place.image}`}
         alt={place.name}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
       <Link href={place.link}>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -164,10 +166,11 @@ const ImageGalleryMobile = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-lg group aspect-square">
-          <img
+          <Image
             src="/img/banner/Kashmir.png"
             alt="Kashmir"
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <Link href="/destinations/kashmir">
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -186,10 +189,11 @@ const ImageGalleryMobile = () => {
             key={index}
             className="relative overflow-hidden rounded-2xl shadow-lg group aspect-square"
           >
-            <img
+            <Image
               src={`/${place.image}`}
               alt={place.name}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <Link href={place.link}>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

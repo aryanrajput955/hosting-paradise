@@ -154,11 +154,10 @@ export default function DomesticGetaways() {
 										{/* Background Image */}
 										<div className="absolute inset-0">
 											<Image
-												height={500}
-												width={400}
+												fill
 												src={destination.image}
 												alt={destination.title}
-												className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+												className="object-cover transition-transform duration-500 group-hover:scale-110"
 												onError={(e) => {
 													e.target.src = '/img/placeholder.jpg';
 												}}
