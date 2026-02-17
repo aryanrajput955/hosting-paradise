@@ -9,8 +9,9 @@ export function generateStaticParams() {
 }
 
 /* ✅ DYNAMIC SEO */
-export function generateMetadata({ params }) {
-  const seo = destinationsSEO[params.slug];
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const seo = destinationsSEO[slug];
 
   return {
     title: seo?.title || "Destinations | Paradise Bliss Tours",
@@ -27,6 +28,7 @@ export function generateMetadata({ params }) {
 }
 
 /* ✅ PAGE RENDER */
-export default function Page({ params }) {
-  return <DestinationClient slug={params.slug} />;
+export default async function Page({ params }) {
+  const { slug } = await params;
+  return <DestinationClient slug={slug} />;
 }

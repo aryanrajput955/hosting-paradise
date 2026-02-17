@@ -7,8 +7,9 @@ export function generateStaticParams() {
 }
 
 /* DYNAMIC SEO */
-export function generateMetadata({ params }) {
-  const seo = indianToursSEO[params.slug];
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const seo = indianToursSEO[slug];
 
   return {
     title: seo?.title || "Indian Tours | Paradise Bliss Tours",
@@ -24,6 +25,7 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  return <IndianToursClient slug={params.slug} />;
+export default async function Page({ params }) {
+  const { slug } = await params;
+  return <IndianToursClient slug={slug} />;
 }

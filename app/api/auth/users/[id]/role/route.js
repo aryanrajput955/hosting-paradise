@@ -16,7 +16,7 @@ export async function PATCH(req, { params }) {
             );
         }
 
-        const { id } = params;
+        const { id } = await params;
         const { role } = await req.json();
 
         // Validation

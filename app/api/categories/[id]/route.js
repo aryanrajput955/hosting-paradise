@@ -5,7 +5,7 @@ import { isAuthenticated, isAdmin } from '@/utils/auth';
 
 export async function GET(req, { params }) {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     try {
         const category = await Category.findById(id);
@@ -43,7 +43,7 @@ export async function PUT(req, { params }) {
             );
         }
 
-        const { id } = params;
+        const { id } = await params;
         const { name, description, color, isActive } = await req.json();
 
         const category = await Category.findById(id);
@@ -100,7 +100,7 @@ export async function DELETE(req, { params }) {
             );
         }
 
-        const { id } = params;
+        const { id } = await params;
         const category = await Category.findById(id);
 
         if (!category) {

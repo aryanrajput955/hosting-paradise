@@ -7,8 +7,9 @@ export function generateStaticParams() {
 }
 
 /* ✅ DYNAMIC SEO */
-export function generateMetadata({ params }) {
-  const seo = tripPackagesSEO[params.slug];
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const seo = tripPackagesSEO[slug];
 
   return {
     title: seo?.title || "Trip Packages | Paradise Bliss Tours",
@@ -24,6 +25,7 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  return <TripPackagesClient slug={params.slug} />;
+export default async function Page({ params }) {
+  const { slug } = await params;
+  return <TripPackagesClient slug={slug} />;
 }

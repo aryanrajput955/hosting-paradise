@@ -7,8 +7,9 @@ export function generateStaticParams() {
 }
 
 /* ✅ DYNAMIC SEO */
-export function generateMetadata({ params }) {
-  const seo = internationalSEO[params.slug];
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const seo = internationalSEO[slug];
 
   return {
     title: seo?.title || "International Tours | Paradise Bliss Tours",
@@ -24,6 +25,7 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  return <InternationalClient slug={params.slug} />;
+export default async function Page({ params }) {
+  const { slug } = await params;
+  return <InternationalClient slug={slug} />;
 }

@@ -5,7 +5,7 @@ import { uploadToS3 } from '@/utils/s3Helper';
 
 export async function GET(req, { params }) {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     try {
         const blog = await Blog.findById(id);
@@ -32,7 +32,7 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     try {
         const {
@@ -91,7 +91,7 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     try {
         const blog = await Blog.findById(id);
