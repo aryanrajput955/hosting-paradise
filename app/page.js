@@ -12,6 +12,7 @@ const AdventureTours = dynamic(() => import("@/components/adventure"), { ssr: tr
 const DomesticGetaways = dynamic(() => import("@/components/international-packages"), { ssr: true });
 const InternationalSlider = dynamic(() => import("@/components/internationalbanner"), { ssr: true });
 const ToursSlider = dynamic(() => import("@/components/tourSlider"), { ssr: true });
+const CharDhamTours = dynamic(() => import("@/components/charDhamTours"), { ssr: true });
 const WhyChooseUs = dynamic(() => import("@/components/whychooseus"), { ssr: true });
 const DVDiaries = dynamic(() => import("@/components/customer-gallery"), { ssr: true });
 const TestimonialSlider = dynamic(() => import("@/components/testimonials"), { ssr: true });
@@ -51,8 +52,9 @@ export default function Home() {
       </Suspense>
 
       <Suspense fallback={null}>
-        <HolidaySaleBanner />
-        <AdventureTours />
+        {/* <HolidaySaleBanner /> */}
+        {/* <AdventureTours /> */}
+        <CharDhamTours />
         <DomesticGetaways />
         <InternationalSlider />
         <ToursSlider />

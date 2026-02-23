@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Image from 'next/image';
+
 
 // Sample gallery images data
 const galleryImages = [
@@ -86,11 +86,13 @@ export default function DVDiaries() {
                   className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ${image.span}`}
                 >
                   {/* Image */}
-                  <Image
-                    fill
+                  <img
                     src={image.src}
                     alt={image.alt}
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:rotate-1"
+                    style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       e.target.src = '/img/placeholder.jpg';
                     }}
@@ -179,13 +181,15 @@ export default function DVDiaries() {
 
             {/* Image */}
             <div className="relative w-full h-full max-h-[90vh]">
-              <Image
+              <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 width={1200}
                 height={800}
                 className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
                 style={{ width: 'auto', height: 'auto' }}
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   e.target.src = '/img/placeholder.jpg';
                 }}

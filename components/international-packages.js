@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useState } from 'react';
-import Image from 'next/image';
+
 import Link from 'next/link';
 
 // Sample destinations data
@@ -153,11 +153,13 @@ export default function DomesticGetaways() {
 									>
 										{/* Background Image */}
 										<div className="absolute inset-0">
-											<Image
-												fill
+											<img
 												src={destination.image}
 												alt={destination.title}
 												className="object-cover transition-transform duration-500 group-hover:scale-110"
+												style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
+										loading="lazy"
+										decoding="async"
 												onError={(e) => {
 													e.target.src = '/img/placeholder.jpg';
 												}}

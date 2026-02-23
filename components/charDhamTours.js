@@ -11,67 +11,46 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Link from 'next/link';
 
 
-const tours = [
-
-  // Spiti Valley Packages
+const charDhamTours = [
   {
-    title: "Winter Spiti Valley Tour",
-    dates: ["March 28", "April 01", "April 15"],
-    prices: ["Starting ₹20,990*", "₹17,990*"],
-    image: "/optimised/Winter_spiti-transformed.jpeg",
-    duration: "9D8N",
+    title: "Chardham Luxury Package",
+    dates: ["May 01", "May 15", "Jun 01"],
+    prices: ["Starting ₹55,000*", "₹44,000*"],
+    image: "/img/shoot/Luxury.jpg",
+    duration: "11N12D",
     group: "Group Tour",
-    link: "/indian-tours/spiti-winter-tour-package",
+    link: "/trip-packages/chardham-luxury",
   },
   {
-    title: "Spiti Valley with Chandra Taal",
-    dates: ["March 29", "April 02", "April 15"],
-    prices: ["Starting ₹20,990*", "₹16,000*"],
-    image: "/optimised/Chandratal-Lake-Spiti.jpeg",
-    duration: "7D6N",
+    title: "Chardham Yatra from Bangalore",
+    dates: ["May 10", "May 25", "Jun 10"],
+    prices: ["Starting ₹49,000*", "₹43,000*"],
+    image: "/img/shoot/chardham_banglore.jpg",
+    duration: "12N13D",
     group: "Group Tour",
-    link: "/indian-tours/spiti-chandratal-tour-package",
+    link: "/trip-packages/chardham-yatra-bangalore",
   },
   {
-    title: "Spiti Valley Bike Tour",
-    dates: ["March 27", "April 05", "April 14"],
-    prices: ["Starting ₹32,990*", "₹29,990*"],
-    image: "/optimised/Spiti-Valley-Bike-Trip.jpeg",
-    duration: "5D6N",
-    group: "Group Adventure",
-    link: "/indian-tours/spiti-bike-tour-package",
+    title: "Chardham Yatra from Delhi",
+    dates: ["May 05", "May 20", "Jun 05"],
+    prices: ["Starting ₹48,000*", "₹44,000*"],
+    image: "/img/shoot/chardham_delhi.jpg",
+    duration: "10N11D",
+    group: "Group Tour",
+    link: "/trip-packages/chardham-yatra-delhi",
   },
   {
-    title: "Spiti Valley Full Circuit",
-    dates: ["Jan 18", "Feb 08", "Feb 15"],
-    prices: ["Starting ₹30,990*", "₹21,999*"],
-    image: "/optimised/Spiti-valey-full-curcuit.jpeg",
-    duration: "9D8N",
+    title: "Chardham Yatra by Helicopter",
+    dates: ["May 01", "Jun 01", "Jun 15"],
+    prices: ["Starting ₹2,85,000*", "₹2,28,000*"],
+    image: "/img/shoot/chardham_helicopter.jpg",
+    duration: "5N6D",
     group: "Group Tour",
-    link: "/indian-tours/spitifullcircuit-tour-package",
-  },
-  // Ladakh Packages
-  {
-    title: "Leh to Turtuk Tour",
-    dates: ["May 15", "June 01", "July 10"],
-    prices: ["Starting ₹25,990*", "₹22,990*"],
-    image: "/optimised/LAdakh_tour-transformed.jpeg",
-    duration: "7D6N",
-    group: "Group Tour",
-    link: "/indian-tours/leh-to-turtuk-tour",
-  },
-  {
-    title: "Ladakh Bike Expedition",
-    dates: ["May 20", "June 05", "July 15"],
-    prices: ["Starting ₹22,990*", "₹19,990*"],
-    image: "/optimised/Ladakh-Tour-2.jpg",
-    duration: "5D4N",
-    group: "Group Tour",
-    link: "/indian-tours/ladakh-bike-trip",
+    link: "/trip-packages/chardham-yatra-helicopter",
   },
 ];
 
-export default function ToursSlider() {
+export default function CharDhamTours() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
   const [formData, setFormData] = useState({
@@ -114,18 +93,17 @@ export default function ToursSlider() {
           style={{ color: 'var(--color-dark)', fontFamily: 'salazur' }}
           className="text-4xl sm:text-5xl md:text-7xl font-bold py-6 text-center"
         >
-          Upcoming Trips
+          Char Dham Tours
         </h1>
       </div>
 
-      {/* Ensure the parent container is properly styled */}
       <div
         style={{ backgroundColor: 'var(--light-green)' }}
         className="relative px-4 sm:px-6 lg:px-10 py-10"
       >
-        <div className="swiper-container">
+        <div className="chardham-swiper-container">
           <Swiper
-            modules={[Pagination, Autoplay, Navigation]} // Ensure modules are correctly imported
+            modules={[Pagination, Autoplay, Navigation]}
             spaceBetween={20}
             slidesPerView={1}
             autoplay={{
@@ -134,7 +112,7 @@ export default function ToursSlider() {
             }}
             pagination={{
               clickable: true,
-              el: '.swiper-pagination-custom',
+              el: '.chardham-swiper-pagination',
               dynamicBullets: true,
               renderBullet: (index, className) => {
                 return `<span class="${className}"></span>`;
@@ -146,7 +124,7 @@ export default function ToursSlider() {
             }}
             className="py-8"
           >
-            {tours.map((tour, index) => (
+            {charDhamTours.map((tour, index) => (
               <SwiperSlide key={index}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -173,11 +151,11 @@ export default function ToursSlider() {
                     />
                   </div>
                   <div className="p-6">
-                  <Link href={tour.link} passHref>
-                    <h3 className="text-xl font-bold text-gray-900">{tour.title}</h3>
-                    <p className="text-sm text-gray-700 mt-1">
-                      {tour.duration} • {tour.group}
-                    </p>
+                    <Link href={tour.link} passHref>
+                      <h3 className="text-xl font-bold text-gray-900">{tour.title}</h3>
+                      <p className="text-sm text-gray-700 mt-1">
+                        {tour.duration} • {tour.group}
+                      </p>
                     </Link>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {tour.dates.map((date, i) => (
@@ -219,7 +197,7 @@ export default function ToursSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="swiper-pagination-custom mt-6 text-center"></div>
+          <div className="chardham-swiper-pagination mt-6 text-center"></div>
         </div>
       </div>
 
@@ -333,15 +311,15 @@ export default function ToursSlider() {
       )}
 
       <style jsx global>{`
-        .swiper-container {
+        .chardham-swiper-container {
           position: relative;
         }
-        .swiper-pagination-custom {
+        .chardham-swiper-pagination {
           position: relative;
           bottom: 0;
           padding-bottom: 10px;
         }
-        .swiper-pagination-bullet {
+        .chardham-swiper-pagination .swiper-pagination-bullet {
           background: rgba(255, 255, 255, 0.8);
           width: 12px;
           height: 12px;
@@ -349,7 +327,7 @@ export default function ToursSlider() {
           border-radius: 50%;
           transition: all 0.3s ease;
         }
-        .swiper-pagination-bullet-active {
+        .chardham-swiper-pagination .swiper-pagination-bullet-active {
           background: var(--color-dark);
           width: 14px;
           height: 14px;

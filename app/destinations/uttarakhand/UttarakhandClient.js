@@ -108,7 +108,7 @@ const UttarakhandTour = () => {
 			{/* Hero Section */}
 			<div
 				className='relative w-full h-screen bg-cover bg-center flex justify-center lg:justify-end items-center px-4 sm:px-6 lg:px-8'
-				style={{backgroundImage: "url('/img/uttarakhand2.jpg')"}}>
+				style={{backgroundImage: "url('/optimised/kashmir_backpacking_odassey-transformed.jpeg')"}}>
 				<h2 className='absolute top-1/2 left-1/2 lg:left-auto lg:right-[60%] transform -translate-x-1/2 lg:translate-x-1/2 -translate-y-1/2 text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center lg:text-left z-10 font-serif'>
 					Uttarakhand Tour
 				</h2>
