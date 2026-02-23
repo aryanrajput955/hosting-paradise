@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 import { useState } from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Sample destinations data
 const destinations = [
@@ -153,13 +154,13 @@ export default function DomesticGetaways() {
 									>
 										{/* Background Image */}
 										<div className="absolute inset-0">
-											<img
+											<Image
 												src={destination.image}
 												alt={destination.title}
+												fill
 												className="object-cover transition-transform duration-500 group-hover:scale-110"
-												style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
-										loading="lazy"
-										decoding="async"
+												loading="lazy"
+												sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
 												onError={(e) => {
 													e.target.src = '/img/placeholder.jpg';
 												}}

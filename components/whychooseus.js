@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 
 const WhyChooseUs = () => {
   return (
@@ -29,7 +30,7 @@ const WhyChooseUs = () => {
             <div className="text-yellow-400 text-5xl mb-2 md:mb-3 animate-bounce-slow">
               {/* Replace with a golden coin or tropical flower icon (e.g., react-icons) */}
               {/* Replace with a golden coin or tropical flower icon (e.g., react-icons) */}
-              <img width={160} height={160} src="/img/best_price.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" decoding="async" />
+              <Image width={160} height={160} src="/img/best_price.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" />
             </div>
             <h3 className="text-teal-800 text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-md">
               Tailor-Made Itineraries for Every Budget
@@ -43,7 +44,7 @@ const WhyChooseUs = () => {
             <div className="text-teal-300 text-5xl mb-2 md:mb-6 animate-bounce-slow">
               {/* Replace with a glowing angel or support icon */}
               {/* Replace with a glowing angel or support icon */}
-              <img width={160} height={160} src="/img/support.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" decoding="async" />
+              <Image width={160} height={160} src="/img/support.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" />
             </div>
             <h3 className="text-teal-800 text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-md">
              24/7 Support & Hassle-Free Booking
@@ -56,7 +57,7 @@ const WhyChooseUs = () => {
             <div className="text-purple-300 text-5xl mb-2 md:mb-6 animate-bounce-slow">
               {/* Replace with a team of divine beings or travel experts icon */}
               {/* Replace with a team of divine beings or travel experts icon */}
-              <img width={160} height={160} src="/img/expert_team.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" decoding="async" />
+              <Image width={160} height={160} src="/img/expert_team.png" alt="Coin icon" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" />
             </div>
             <h3 className="text-teal-800 text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-md">
               Trusted Travel Experts with 10+ Years of Experience
@@ -69,7 +70,7 @@ const WhyChooseUs = () => {
             <div className="text-5xl mb-2 md:mb-6 animate-bounce-slow">
               {/* Replace with a glowing shield or magnifying glass icon */}
               {/* Replace with a glowing shield or magnifying glass icon */}
-              <img width={160} height={160} src="/img/Transparency.png" alt="transparency" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" decoding="async" />
+              <Image width={160} height={160} src="/img/Transparency.png" alt="transparency" className="w-24 h-24 md:w-40 md:h-40" loading="lazy" />
             </div>
             <h3 className="text-teal-800 text-xl md:text-3xl font-bold mb-2 md:mb-4 drop-shadow-md">
               100% Transparency,Honest pricing—no hidden fees

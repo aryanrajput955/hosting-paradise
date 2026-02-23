@@ -9,6 +9,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const charDhamTours = [
@@ -137,13 +138,13 @@ export default function CharDhamTours() {
                   className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 h-full"
                 >
                   <div className="relative w-full h-56">
-                    <img
+                    <Image
                       src={tour.image}
                       alt={tour.title}
+                      fill
                       className="object-cover rounded-t-xl"
-                      style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
                       loading="lazy"
-                      decoding="async"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       onError={(e) => {
                         console.error(`Failed to load image: ${tour.image}`);
                         e.target.src = '/img/placeholder.jpg';
@@ -223,13 +224,13 @@ export default function CharDhamTours() {
             {selectedTour && (
               <div className="mb-4">
                 <div className="relative w-full h-32">
-                  <img
+                  <Image
                     src={selectedTour.image}
                     alt={selectedTour.title}
+                    fill
                     className="object-cover rounded-lg"
-                    style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
                     loading="lazy"
-                    decoding="async"
+                    sizes="400px"
                   />
                 </div>
                 <h3 className="mt-3 text-lg font-bold text-gray-900">

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaBed, FaUtensils, FaStar } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function TourCard({ title, days, originalPrice, price, discount, itinerary, type, isRecommended, image, rating, link }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -10,9 +11,11 @@ export default function TourCard({ title, days, originalPrice, price, discount, 
     <div className="bg-[#E4DECF] rounded-lg my-6 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300 ease-in-out max-w-4xl mx-auto flex flex-col md:flex-row">
       {/* Image Section */}
       <div className="relative w-full md:w-1/3 flex-shrink-0">
-        <img
+        <Image
           src={image}
           alt={title}
+          width={600}
+          height={400}
           loading="lazy"
           className="w-full h-48 md:h-64 object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none"
         />

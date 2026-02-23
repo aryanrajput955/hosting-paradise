@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Image from 'next/image';
 import Link from 'next/link';
 
 
@@ -79,13 +80,13 @@ const ImageGalleryMobile = () => {
 
   const renderCard = (place) => (
     <div className="relative overflow-hidden rounded-2xl my-10 shadow-lg group aspect-square">
-      <img
+      <Image
         src={`/${place.image}`}
         alt={place.name}
+        fill
         className="object-cover transition-transform duration-300 group-hover:scale-105"
-        style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
         loading="lazy"
-        decoding="async"
+        sizes="50vw"
       />
       <Link href={place.link}>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -168,13 +169,13 @@ const ImageGalleryMobile = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-lg group aspect-square">
-          <img
+          <Image
             src="/img/banner/Kashmir.png"
             alt="Kashmir"
+            fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
-            style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
             loading="lazy"
-            decoding="async"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <Link href="/destinations/kashmir">
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -193,13 +194,13 @@ const ImageGalleryMobile = () => {
             key={index}
             className="relative overflow-hidden rounded-2xl shadow-lg group aspect-square"
           >
-            <img
+            <Image
               src={`/${place.image}`}
               alt={place.name}
+              fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
-              style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
               loading="lazy"
-              decoding="async"
+              sizes="(max-width: 768px) 100vw, 25vw"
             />
             <Link href={place.link}>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -139,14 +140,23 @@ export default function InternationalSlider() {
                     className="relative rounded-none md:rounded-xl overflow-hidden shadow-2xl h-[220px] sm:h-[260px] md:h-[420px] lg:h-[520px] xl:h-[360px]"
                     style={{ height: dynamicHeight }}
                   >
-                    <img
-                      ref={(el) => { imgRefs.current[index] = el; }}
+                    <Image
                       src={banner.image}
                       alt={banner.alt}
+                      fill
                       className="object-cover"
-                      style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      decoding="async"
+                      priority={index === 0}
+                      loading={index === 0 ? undefined : "lazy"}
+                      sizes="100vw"
+                      onLoad={(e) => {
+                        const img = e.target;
+                        imgRefs.current[index] = img;
+                        if (window.innerWidth < 640 && img.naturalWidth && img.naturalHeight) {
+                          const containerWidth = img.parentElement?.clientWidth || img.clientWidth;
+                          const aspectRatio = img.naturalHeight / img.naturalWidth;
+                          setMobileHeights(prev => ({ ...prev, [index]: Math.round(containerWidth * aspectRatio) }));
+                        }
+                      }}
                     />
                   </div>
                 </Link>

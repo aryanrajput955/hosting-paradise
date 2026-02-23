@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 
 
 export default function Quote() {
@@ -6,27 +7,25 @@ export default function Quote() {
     <div className="relative bg-[#00453a] py-16 flex flex-col items-center text-center px-6 mx-12 my-10 rounded-3xl shadow-2xl">
       {/* Left Side Image - Hidden on Small Screens */}
       <div className="absolute left-0 bottom-0 w-60 md:w-72 hidden md:block">
-        <img
+        <Image
           src="/img/in-doubt-svg.svg"
           alt="Confused Person"
           width={300}
           height={300}
           style={{ width: '100%', height: 'auto' }}
           loading="lazy"
-          decoding="async"
         />
       </div>
 
       {/* Right Side Image - Hidden on Small Screens */}
       <div className="absolute right-10 top-11 w-40 md:w-56 hidden md:block">
-        <img
+        <Image
           src="/img/in-doubt.svg"
           alt="Question Marks"
           width={200}
           height={200}
           style={{ width: '100%', height: 'auto' }}
           loading="lazy"
-          decoding="async"
         />
       </div>
 

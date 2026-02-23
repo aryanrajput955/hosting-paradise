@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -48,13 +49,13 @@ export default function AdventureTours() {
 
       {/* ✅ Smaller Image on Mobile */}
       <div className="w-full h-[140px] md:h-[210px] relative overflow-hidden rounded-lg mb-3 md:mb-4">
-        <img
+        <Image
           src={item.img}
           alt={item.title}
+          fill
           className="object-cover"
-          style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
           loading="lazy"
-          decoding="async"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
 

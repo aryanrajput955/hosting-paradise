@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const testimonials = [
   { 
@@ -122,13 +123,13 @@ export default function TestimonialSlider() {
                 {/* Reviewer Image, Name & Location */}
                 <div className="flex items-center gap-3 mt-4 text-left">
                   <div className="relative w-12 h-12 flex-shrink-0">
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
+                      fill
                       className="shadow-lg rounded-full object-cover"
-                      style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}
                       loading="lazy"
-                      decoding="async"
+                      sizes="48px"
                     />
                   </div>
                   <div>

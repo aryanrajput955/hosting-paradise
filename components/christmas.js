@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const HolidaySaleBanner = () => {
@@ -54,7 +55,7 @@ const HolidaySaleBanner = () => {
   const RotatingSnowflake = ({ delay, position, size, imageUrl }) => (
     <div className={`absolute ${position}`} style={{ animationDelay: delay }}>
       {imageUrl ? (
-        <img src={imageUrl} alt="snowflake" width={24} height={24} className={`${size} opacity-90 animate-spin drop-shadow-lg`} style={{ animationDuration: '8s' }} loading="lazy" decoding="async" />
+        <Image src={imageUrl} alt="snowflake" width={24} height={24} className={`${size} opacity-90 animate-spin drop-shadow-lg`} style={{ animationDuration: '8s' }} loading="lazy" />
       ) : (
         <svg className={`${size} text-white opacity-90 animate-spin`} viewBox="0 0 24 24" fill="currentColor" style={{ animationDuration: '8s' }}>
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -85,7 +86,7 @@ const HolidaySaleBanner = () => {
           <div className="flex flex-col items-center gap-0 md:gap-0.5 mb-1 md:mb-3">
             <div className="flex items-center gap-1 md:gap-2">
               <h1 className="text-white text-3xl md:text-6xl font-extrabold tracking-widest drop-shadow-2xl">SALE</h1>
-              <img src="/img/santa.png" alt="sale" width={48} height={48} className="w-6 h-6 md:w-12 md:h-12 hover:scale-110 transition-transform duration-300 hover:rotate-25 drop-shadow-lg" loading="lazy" decoding="async" />
+              <Image src="/img/santa.png" alt="sale" width={48} height={48} className="w-6 h-6 md:w-12 md:h-12 hover:scale-110 transition-transform duration-300 hover:rotate-25 drop-shadow-lg" loading="lazy" />
             </div>
             <h2 className="text-white text-base md:text-3xl font-extrabold tracking-wide drop-shadow-lg text-center">Christmas & New Year</h2>
           </div>
@@ -106,7 +107,7 @@ const HolidaySaleBanner = () => {
                     <Link href={dest.url}>
                       <div className="relative rounded-md md:rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border-2 md:border-3 border-yellow-300 bg-white">
                         <div className="relative h-12 w-26 md:h-20 md:w-28 overflow-hidden bg-gray-200">
-                          <img src={dest.image} alt={dest.name} className="absolute inset-0 object-cover object-center group-hover:scale-110 transition-transform duration-500" style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }} loading="lazy" decoding="async" />
+                          <Image src={dest.image} alt={dest.name} fill className="object-cover object-center group-hover:scale-110 transition-transform duration-500" loading="lazy" sizes="120px" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-50 transition-all duration-300"></div>
                         </div>
                       </div>
