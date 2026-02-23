@@ -112,7 +112,6 @@ const Footer = () => {
               <li><Link href="/privacy-policy" className="hover:text-[var(--forest-green)] hover:translate-x-2 inline-block transition-transform duration-300">Privacy Policy</Link></li>
               <li><Link href="/cancellation-policy" className="hover:text-[var(--forest-green)] hover:translate-x-2 inline-block transition-transform duration-300">Cancellation Policy</Link></li>
               <li><Link href="/terms-and-conditions" className="hover:text-[var(--forest-green)] hover:translate-x-2 inline-block transition-transform duration-300">Terms & Conditions</Link></li>
-              <li><Link href="/write-for-us" className="hover:text-[var(--forest-green)] hover:translate-x-2 inline-block transition-transform duration-300">Write for Us</Link></li>
             </ul>
           </div>
 
