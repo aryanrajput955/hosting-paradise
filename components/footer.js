@@ -81,23 +81,23 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-2 text-gray-800">Blogs</h3>
             <ul style={{ fontFamily: 'jost' }} className="sm:text-base lg:text-md space-y-2">
               <li>
-                <Link href="/top-10-tourist-attractions-in-kedarnath" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
+                <Link href="/blogs/top-10-tourist-attractions-in-kedarnath" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
                   <span className="text-green-500 mr-1">#</span>Top 10 Tourist Attractions in Kedarnath
                 </Link>
               </li>
               <li>
-                <Link href="/best-places-to-visit-in-spiti-valley" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
-                  <span className="text-green-500 mr-1">#</span> Best places to visit in Spiti Valley for a Happy Vacations
+                <Link href="/blogs/7-compelling-reasons-to-visit-spiti-valley" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
+                  <span className="text-green-500 mr-1">#</span>7 Compelling Reasons to Visit Spiti Valley
                 </Link>
               </li>
               <li>
-                <Link href="/manali-zen-town-of-himachal" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
-                  <span className="text-green-500 mr-1">#</span>Manali: The Zen Town of Himachal, India's Best Hill Station
+                <Link href="/blogs/manali-the-zen-town-of-himachal-india-s-best-hill-station" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
+                  <span className="text-green-500 mr-1">#</span>Manali: The Zen Town of Himachal
                 </Link>
               </li>
               <li>
-                <Link href="/interesting-ways-to-explore-manali" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
-                  <span className="text-green-500 mr-1">#</span> The Interesting Ways to Explore Manali
+                <Link href="/blogs/the-ultimate-guide-to-the-best-places-to-visit-in-rajasthan" className="hover:text-[var(--forest-green)] hover:underline transition-all duration-300 block">
+                  <span className="text-green-500 mr-1">#</span>The Ultimate Guide to the Best Places to Visit in Rajasthan
                 </Link>
               </li>
             </ul>
