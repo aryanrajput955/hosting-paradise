@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		// unoptimized: true,
+		unoptimized: true,
 		remotePatterns: [
 			{
 				protocol: 'https',
@@ -16,6 +16,14 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'akshat.genericbucket.s3.ap-south-1.amazonaws.com',
+			},
+			{
+				protocol: 'https',
+				hostname: 's3-ap-south-1.amazonaws.com',
+			},
+			{
+				protocol: 'https',
+				hostname: 'raacho.b-cdn.net',
 			},
 		],
 	},

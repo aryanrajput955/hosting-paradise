@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function MobileHeroSection() {
   return (
-    <section className="md:hidden block relative min-h-screen h-screen flex items-center justify-center px-3 xs:px-4">
+    <section className="md:hidden block relative min-h-[65vh] h-[65vh] flex items-center justify-center px-3 xs:px-4">
       <Image
         src="/img/shoot/pexels-quang-nguyen-vinh-2132174.jpeg"
         alt="Background"
