@@ -4,24 +4,24 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const BlogDetailsClient = ({ id, initialBlog }) => {
+const BlogDetailsClient = ({ slug, initialBlog }) => {
     const router = useRouter()
     const [blog, setBlog] = useState(initialBlog)
     const [isLoading, setIsLoading] = useState(!initialBlog)
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        if (!initialBlog && id) {
+        if (!initialBlog && slug) {
             fetchBlogDetails()
         }
-    }, [id, initialBlog])
+    }, [slug, initialBlog])
 
     const fetchBlogDetails = async () => {
         try {
             setIsLoading(true)
             const baseUrl = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '')
             const response = await axios.get(
-                `${baseUrl}/api/blogs/${id}`
+                `${baseUrl}/api/blogs/${slug}`
             )
             if (response.data.success) {
                 setBlog(response.data.data)
@@ -97,7 +97,7 @@ const BlogDetailsClient = ({ id, initialBlog }) => {
              {/* Navigation Bar Placeholder (if global nav isn't sticky) or just padding */}
             <div className="pt-24 lg:pt-32"></div>
 
-            <article className='max-w-[90%] w-full mx-auto px-4 sm:px-6 lg:px-8 pb-20'>
+            <article className='max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-20'>
                 {/* Back Link */}
                 <div className="mb-12">
                     <Link
@@ -126,7 +126,7 @@ const BlogDetailsClient = ({ id, initialBlog }) => {
                             <span>{calculateReadingTime(blog.content)} min read</span>
                         </div>
                         
-                        <h1 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-dark)] leading-[1.1] mb-8'>
+                        <h1 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--color-dark)] leading-[1.1] mb-8 break-words'>
                             {blog.title}
                         </h1>
 
@@ -181,24 +181,112 @@ const BlogDetailsClient = ({ id, initialBlog }) => {
                     </div>
 
                     {/* Blog Content Centered */}
-                    <div className='col-span-1 lg:col-span-10 lg:col-start-2'>
-                        <div className='bg-white rounded-[2.5rem] p-8 md:p-14 lg:p-20 shadow-2xl border border-[var(--sandy)]/20'>
+                    <div className='col-span-1 lg:col-span-12 xl:col-span-10 xl:col-start-2'>
+                        <div className='bg-white rounded-3xl md:rounded-[2.5rem] p-5 md:p-14 lg:p-20 shadow-2xl border border-[var(--sandy)]/20 overflow-hidden'>
                             <div 
-                                className='max-w-none w-full font-jost text-gray-800 leading-relaxed
-                                [&_p]:text-xl [&_p]:mb-5 [&_p]:leading-relaxed
-                                [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-[var(--color-dark)] [&_h1]:mt-8 [&_h1]:mb-4 
-                                [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[var(--color-dark)] [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:pb-2 [&_h2]:border-b-2 [&_h2]:border-[var(--sandy)]
-                                [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-[var(--color-dark)] [&_h3]:mt-6 [&_h3]:mb-3
-                                [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_ul]:space-y-2
-                                [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-5 [&_ol]:space-y-2
-                                [&_li]:text-lg [&_li]:pl-2
-                                [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--forest-green)] [&_blockquote]:pl-6 [&_blockquote]:py-4 [&_blockquote]:bg-[var(--sandy)]/30 [&_blockquote]:rounded-r-xl [&_blockquote]:italic [&_blockquote]:text-[var(--color-dark)] [&_blockquote]:text-lg [&_blockquote]:my-6
-                                [&_a]:text-[#0077B6] [&_a]:underline [&_a]:underline-offset-4 [&_a]:font-medium [&_a]:transition-colors hover:[&_a]:text-[var(--color-dark)]
-                                [&_img]:rounded-2xl [&_img]:shadow-lg [&_img]:my-6 [&_img]:w-full [&_img]:h-auto
-                                [&_strong]:font-bold [&_strong]:text-[var(--color-dark)]
-                                [&_*]:break-words [&_*]:max-w-full'
+                                className='blog-content-container max-w-none w-full font-jost text-gray-800 leading-relaxed'
                                 dangerouslySetInnerHTML={{ __html: blog.content }}
                             />
+                            
+                            <style jsx global>{`
+                                .blog-content-container {
+                                    font-size: 1.125rem;
+                                    line-height: 1.8;
+                                    color: #374151;
+                                    word-wrap: break-word;
+                                    overflow-wrap: break-word;
+                                    word-break: break-word;
+                                }
+                                .blog-content-container p {
+                                    margin-bottom: 1.5rem;
+                                }
+                                .blog-content-container h1, 
+                                .blog-content-container h2, 
+                                .blog-content-container h3 {
+                                    color: var(--color-dark);
+                                    font-weight: 800;
+                                    line-height: 1.2;
+                                    margin-top: 2.5rem;
+                                    margin-bottom: 1.25rem;
+                                    font-family: 'salazur', sans-serif;
+                                }
+                                .blog-content-container h1 { font-size: 2.5rem; }
+                                .blog-content-container h2 { 
+                                    font-size: 2rem; 
+                                    border-bottom: 2px solid var(--sandy);
+                                    padding-bottom: 0.5rem;
+                                }
+                                .blog-content-container h3 { font-size: 1.5rem; }
+                                
+                                .blog-content-container ul, 
+                                .blog-content-container ol {
+                                    margin-bottom: 1.5rem;
+                                    padding-left: 1.5rem;
+                                }
+                                .blog-content-container ul { list-style-type: disc; }
+                                .blog-content-container ol { list-style-type: decimal; }
+                                .blog-content-container li { margin-bottom: 0.5rem; }
+                                
+                                .blog-content-container blockquote {
+                                    border-left: 4px solid var(--forest-green);
+                                    padding: 1.5rem 2rem;
+                                    background: rgba(var(--sandy-rgb), 0.1);
+                                    border-radius: 0 1rem 1rem 0;
+                                    font-style: italic;
+                                    font-size: 1.25rem;
+                                    margin: 2rem 0;
+                                    color: var(--color-dark);
+                                }
+                                
+                                .blog-content-container img, 
+                                .blog-content-container iframe, 
+                                .blog-content-container video, 
+                                .blog-content-container table {
+                                    max-width: 100%;
+                                    height: auto;
+                                    display: block;
+                                }
+                                
+                                .blog-content-container img {
+                                    border-radius: 1.5rem;
+                                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+                                    margin: 2.5rem 0;
+                                }
+                                
+                                .blog-content-container a {
+                                    color: #0077B6;
+                                    text-decoration: underline;
+                                    text-underline-offset: 4px;
+                                    font-weight: 600;
+                                    transition: color 0.2s;
+                                }
+                                .blog-content-container a:hover {
+                                    color: var(--color-dark);
+                                }
+                                
+                                .blog-content-container strong {
+                                    font-weight: 700;
+                                    color: var(--color-dark);
+                                }
+                                
+                                /* Quill specific alignment classes */
+                                .blog-content-container .ql-align-center { text-align: center; }
+                                .blog-content-container .ql-align-right { text-align: right; }
+                                .blog-content-container .ql-align-justify { text-align: justify; }
+                                
+                                /* Quill specific indentation */
+                                .blog-content-container .ql-indent-1 { padding-left: 3em; }
+                                .blog-content-container .ql-indent-2 { padding-left: 6em; }
+                                .blog-content-container .ql-indent-3 { padding-left: 9em; }
+                                
+                                .blog-content-container pre {
+                                    background: #f3f4f6;
+                                    padding: 1rem;
+                                    border-radius: 0.5rem;
+                                    overflow-x: auto;
+                                    margin-bottom: 1.5rem;
+                                }
+                            `}</style>
                             
                             {/* Mobile Share (Visible only on small screens) */}
                             <div className="lg:hidden flex justify-center gap-6 mt-16 pt-10 border-t border-gray-100">

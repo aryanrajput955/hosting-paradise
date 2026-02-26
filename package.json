@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.997.0",
+    "@aws-sdk/lib-storage": "^3.997.0",
     "aws-sdk": "^2.1693.0",
     "axios": "^1.13.5",
     "bcryptjs": "^3.0.3",
     "framer-motion": "^12.4.7",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.477.0",
+    "marked": "^17.0.3",
     "mongoose": "^9.2.1",
     "next": "15.2.8",
     "react": "^19.0.0",

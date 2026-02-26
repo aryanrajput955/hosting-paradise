@@ -202,16 +202,16 @@ const BlogsClient = () => {
                                         </div>
                                     </div>
 
-                                    <h2 className='text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#00453a] transition-colors'>
+                                    <h2 className='text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#00453a] transition-colors break-words'>
                                         {blog.title}
                                     </h2>
 
-                                    <p className='text-gray-600 mb-4 line-clamp-3 leading-relaxed'>
+                                    <p className='text-gray-600 mb-4 line-clamp-3 leading-relaxed break-words'>
                                         {truncateText(blog.metaDescription, 120)}
                                     </p>
 
                                     <Link
-                                        href={`/blogs/${blog._id}`}
+                                        href={`/blogs/${blog.slug || blog._id}`}
                                         className='inline-flex items-center gap-2 text-[#00453a] font-semibold hover:gap-3 transition-all group/link'>
                                         Read More
                                         <svg

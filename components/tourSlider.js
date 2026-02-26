@@ -113,7 +113,7 @@ export default function ToursSlider() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1
           style={{ color: 'var(--color-dark)', fontFamily: 'salazur' }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold py-6 text-center"
+          className="text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold py-3 xs:py-4 md:py-6 text-center"
         >
           Upcoming Trips
         </h1>
@@ -122,7 +122,7 @@ export default function ToursSlider() {
       {/* Ensure the parent container is properly styled */}
       <div
         style={{ backgroundColor: 'var(--light-green)' }}
-        className="relative px-4 sm:px-6 lg:px-10 py-10"
+        className="relative px-3 xs:px-4 sm:px-6 lg:px-10 py-6 xs:py-8 md:py-10"
       >
         <div className="swiper-container">
           <Swiper
@@ -159,7 +159,7 @@ export default function ToursSlider() {
                   }}
                   className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 h-full"
                 >
-                  <div className="relative w-full h-56">
+                  <div className="relative w-full h-32 xs:h-40 sm:h-48 md:h-56">
                     <Image
                       src={tour.image}
                       alt={tour.title}
@@ -173,29 +173,29 @@ export default function ToursSlider() {
                       }}
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-3 xs:p-4 md:p-6">
                   <Link href={tour.link} passHref>
-                    <h3 className="text-xl font-bold text-gray-900">{tour.title}</h3>
-                    <p className="text-sm text-gray-700 mt-1">
+                    <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-gray-900">{tour.title}</h3>
+                    <p className="text-xs xs:text-sm text-gray-700 mt-1">
                       {tour.duration} • {tour.group}
                     </p>
                     </Link>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-2 xs:mt-3 md:mt-4 flex flex-wrap gap-1.5 xs:gap-2">
                       {tour.dates.map((date, i) => (
                         <span
                           key={i}
-                          className="bg-[#F1FDF3] text-[#00453a] px-3 py-1 rounded-full text-sm flex items-center gap-1"
+                          className="bg-[#F1FDF3] text-[#00453a] px-2 xs:px-3 py-0.5 xs:py-1 rounded-full text-xs xs:text-sm flex items-center gap-1"
                         >
                           <AiOutlineCalendar className="text-[#00453a]" />
                           {date}
                         </span>
                       ))}
                     </div>
-                    <div className="mt-5 text-right">
-                      <span className="text-gray-500 line-through text-base">
+                    <div className="mt-3 xs:mt-4 md:mt-5 text-right">
+                      <span className="text-gray-500 line-through text-xs xs:text-base">
                         {tour.prices[0]}
                       </span>
-                      <p className="text-xl font-bold text-green-600 mt-1">
+                      <p className="text-base xs:text-lg md:text-xl font-bold text-green-600 mt-1">
                         {tour.prices[1]}
                       </p>
                     </div>

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import HeroSection from "@/components/herosection";
+import MobileHeroSection from "@/components/MobileHeroSection";
 import ImageGallery from "@/components/imageGalley";
 import ImageGalleryMobile from '@/components/imagegallerymobile';
 
@@ -33,7 +34,10 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
-      <HeroSection />
+      <MobileHeroSection />
+      <div className="hidden md:block">
+        <HeroSection />
+      </div>
       <div className="hidden md:block">
       <ImageGallery />
       </div>

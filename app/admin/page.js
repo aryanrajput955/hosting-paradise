@@ -124,9 +124,9 @@ const AdminHome = () => {
                             className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg hover:border-slate-300 transition-all duration-200 group'>
                             {/* Image Container */}
                             <div className='relative h-48 bg-slate-100'>
-                                {blog.metaImage ? (
+                                {blog.image ? (
                                     <img
-                                        src={blog.metaImage}
+                                        src={blog.image}
                                         alt={blog.metaTitle}
                                         className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-200'
                                     />

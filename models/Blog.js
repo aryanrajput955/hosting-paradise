@@ -50,19 +50,22 @@ const blogSchema = new mongoose.Schema(
 // Generate slug from title before saving
 blogSchema.pre('save', async function () {
 	if (this.isModified('title')) {
-		this.slug = this.title
+		const baseSlug = this.title
 			.toLowerCase()
 			.replace(/[^a-z0-9]+/g, '-')
 			.replace(/^-+|-+$/g, '')
 
-		// Ensure unique slug
+		// Check if a DIFFERENT blog already uses this slug
 		const existingBlog = await mongoose.models.Blog.findOne({
-			slug: this.slug,
+			slug: baseSlug,
 			_id: { $ne: this._id },
 		})
 
 		if (existingBlog) {
-			this.slug = `${this.slug}-${Date.now()}`
+			// Only add timestamp if there's a real conflict with another post
+			this.slug = `${baseSlug}-${Date.now()}`
+		} else {
+			this.slug = baseSlug
 		}
 	}
 })

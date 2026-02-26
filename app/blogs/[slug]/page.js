@@ -4,10 +4,16 @@ import BlogDetailsClient from './BlogDetailsClient';
 
 export async function generateMetadata({ params }) {
     await connectDB();
-    const { id } = await params;
+    const { slug } = await params;
     
     try {
-        const blog = await Blog.findById(id);
+        let blog = await Blog.findOne({ slug: slug });
+        
+        // Fallback for old ID-based links
+        if (!blog && slug.length === 24) {
+            blog = await Blog.findById(slug);
+        }
+
         if (!blog) {
             return {
                 title: 'Blog Not Found | Paradise Bliss',
@@ -34,11 +40,17 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPage({ params }) {
     await connectDB();
-    const { id } = await params;
+    const { slug } = await params;
     
     let initialBlog = null;
     try {
-        const blog = await Blog.findById(id);
+        let blog = await Blog.findOne({ slug: slug });
+        
+        // Fallback for old ID-based links
+        if (!blog && slug.length === 24) {
+            blog = await Blog.findById(slug);
+        }
+
         if (blog) {
             initialBlog = JSON.parse(JSON.stringify(blog));
         }
@@ -46,5 +58,5 @@ export default async function BlogPage({ params }) {
         console.error('Error fetching blog for server render:', error);
     }
 
-    return <BlogDetailsClient id={id} initialBlog={initialBlog} />;
+    return <BlogDetailsClient slug={slug} initialBlog={initialBlog} />;
 }

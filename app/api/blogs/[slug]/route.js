@@ -5,10 +5,15 @@ import { uploadToS3 } from '@/utils/s3Helper';
 
 export async function GET(req, { params }) {
     await connectDB();
-    const { id } = await params;
+    const { slug } = await params;
 
     try {
-        const blog = await Blog.findById(id);
+        let blog = await Blog.findOne({ slug: slug });
+        
+        // Fallback for ID-based lookup
+        if (!blog && slug.length === 24) {
+            blog = await Blog.findById(slug);
+        }
 
         if (!blog) {
             return NextResponse.json(
@@ -32,7 +37,7 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
     await connectDB();
-    const { id } = await params;
+    const { slug } = await params;
 
     try {
         const {
@@ -45,7 +50,11 @@ export async function PUT(req, { params }) {
             date,
         } = await req.json();
 
-        const blog = await Blog.findById(id);
+        let blog = await Blog.findOne({ slug: slug });
+        
+        if (!blog && slug.length === 24) {
+            blog = await Blog.findById(slug);
+        }
 
         if (!blog) {
             return NextResponse.json(
@@ -62,17 +71,21 @@ export async function PUT(req, { params }) {
             imageUrl = uploadResult.url;
         }
 
-        // Update fields
-        blog.metaTitle = metaTitle !== undefined ? metaTitle.trim() : blog.metaTitle;
-        blog.metaDescription =
-            metaDescription !== undefined
-                ? metaDescription.trim()
-                : blog.metaDescription;
+        // Update fields safely
+        if (metaTitle !== undefined) blog.metaTitle = metaTitle.trim();
+        if (metaDescription !== undefined) blog.metaDescription = metaDescription.trim();
         blog.image = imageUrl;
-        blog.title = title !== undefined ? title.trim() : blog.title;
-        blog.content = content !== undefined ? content.trim() : blog.content;
-        blog.author = author !== undefined ? author.trim() : blog.author;
-        blog.date = date !== undefined ? new Date(date) : blog.date;
+        if (title !== undefined) blog.title = title.trim();
+        if (content !== undefined) blog.content = content.trim();
+        if (author !== undefined) blog.author = author.trim();
+        
+        // Only update date if it's a valid date string
+        if (date) {
+            const newDate = new Date(date);
+            if (!isNaN(newDate.getTime())) {
+                blog.date = newDate;
+            }
+        }
 
         await blog.save();
 
@@ -91,10 +104,14 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
     await connectDB();
-    const { id } = await params;
+    const { slug } = await params;
 
     try {
-        const blog = await Blog.findById(id);
+        let blog = await Blog.findOne({ slug: slug });
+        
+        if (!blog && slug.length === 24) {
+            blog = await Blog.findById(slug);
+        }
 
         if (!blog) {
             return NextResponse.json(
@@ -103,7 +120,7 @@ export async function DELETE(req, { params }) {
             );
         }
 
-        await Blog.findByIdAndDelete(id);
+        await Blog.findByIdAndDelete(blog._id);
 
         return NextResponse.json(
             { success: true, message: 'Blog deleted successfully' },
