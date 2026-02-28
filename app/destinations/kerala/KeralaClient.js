@@ -130,7 +130,7 @@ const KeralaTour = () => {
     <>
       {/* Hero Section */}
       <div
-        className="relative w-full h-screen bg-cover bg-center flex justify-center lg:justify-end items-center px-4 sm:px-6 lg:px-8"
+        className="relative w-full h-[65vh] lg:h-screen bg-cover bg-center flex justify-center lg:justify-end items-center px-4 sm:px-6 lg:px-8"
         style={{ backgroundImage: "url('/img/kerala2.jpg')" }}
       >
         <h2
@@ -348,7 +348,7 @@ const KeralaTour = () => {
             spaceBetween={20}
             slidesPerView={1}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            pagination={{ clickable: true, el: '.swiper-pagination-custom', dynamicBullets: true }}
+            pagination={{ clickable: true, el: '.swiper-pagination-custom' }}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3.5 },
@@ -357,62 +357,96 @@ const KeralaTour = () => {
           >
             {tours.map((tour, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-white rounded-xl shadow-2xl overflow-hidden h-full flex flex-col">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    whileHover={{ scale: 1.05, boxShadow: '0 15px 30px rgba(0,0,0,0.2)' }}
-                    className="h-full flex flex-col"
-                  >
-                    <Link href={tour.link} className="flex-1 flex flex-col">
-                      <Image
-                        src={tour.image}
-                        width={400}
-                        height={224}
-                        alt={tour.title}
-                        className="w-full h-56 object-cover rounded-t-xl"
-                        onError={(e) => (e.target.src = '/img/placeholder.jpg')}
-                      />
-                      <div className="p-6 flex-1">
-                        <h3 className="text-xl font-bold text-gray-900">{tour.title}</h3>
-                        <p className="text-sm text-gray-700 mt-1">{tour.duration} • {tour.group}</p>
-
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {tour.dates.map((date, i) => (
-                            <span key={i} className="bg-[#F1FDF3] text-[#00453a] px-3 py-1 rounded-full text-sm flex items-center gap-1">
-                              <AiOutlineCalendar /> {date}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="mt-5 text-right">
-                          <span className="text-gray-500 line-through text-base">{tour.prices[0]}</span>
-                          <p className="text-xl font-bold text-green-600 mt-1">{tour.prices[1]}</p>
-                          {tour.prices[2] && <p className="text-sm text-red-600 font-medium">{tour.prices[2]}</p>}
-                        </div>
-                      </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+                  }}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-full h-44 xs:h-48 sm:h-52 md:h-56">
+                    <Image
+                      src={tour.image}
+                      alt={tour.title}
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      onError={(e) => {
+                        console.error(`Failed to load image: ${tour.image}`);
+                        e.target.src = '/img/placeholder.jpg';
+                      }}
+                    />
+                  </div>
+                  <div className="p-4 xs:p-5 md:p-6 flex flex-col flex-1">
+                  <Link href={tour.link} passHref>
+                    <h3 className="text-base xs:text-lg sm:text-lg md:text-xl font-bold text-gray-900 leading-snug">{tour.title}</h3>
+                    <p className="text-xs xs:text-sm text-gray-500 mt-1">
+                      {tour.duration} • {tour.group}
+                    </p>
                     </Link>
-
-                    <div className="px-6 pb-6">
-                      <motion.button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleOpenModal(tour);
-                        }}
-                        whileHover={{ scale: 1.05 }}
+                    <div className="mt-3 md:mt-4 flex flex-wrap gap-1.5 xs:gap-2">
+                      {tour.dates.map((date, i) => (
+                        <span
+                          key={i}
+                          className="bg-[#F1FDF3] text-[#00453a] px-2.5 xs:px-3 py-1 rounded-full text-xs xs:text-sm flex items-center gap-1"
+                        >
+                          <AiOutlineCalendar className="text-[#00453a]" />
+                          {date}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-3 xs:mt-4 md:mt-5 flex items-end justify-between">
+                      <span className="text-gray-400 line-through text-xs xs:text-sm">
+                        {tour.prices[0] !== "Price on Request*" && tour.prices[0] !== "Price on Request" && tour.prices[0] !== "On Request" ? tour.prices[0] : ""}
+                      </span>
+                      <p className="text-lg xs:text-xl md:text-xl font-bold text-green-600">
+                        {tour.prices[1] || tour.prices[0]}
+                      </p>
+                    </div>
+                    <div className="flex gap-2.5 mt-4 xs:mt-5">
+                      {/* Phone Call Button */}
+                      <motion.a
+                        href="tel:+918449000181"
+                        whileHover={{ scale: 1.08, backgroundColor: '#00332A' }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full py-3 bg-[#00453A] text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-[#00332A] transition"
+                        className="py-3 px-5 bg-[#00453A] text-white rounded-xl flex items-center justify-center transition-colors duration-300"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
                           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                         </svg>
-                        Request Callback
-                      </motion.button>
+                      </motion.a>
+
+                      {/* Details Button */}
+                      <Link href={tour.link} className="flex-1">
+                        <motion.div
+                          whileHover={{ scale: 1.05, backgroundColor: '#00453A', color: '#ffffff' }}
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full py-3 border-2 border-[#00453A] text-[#00453A] bg-white rounded-xl flex items-center justify-center gap-2 font-semibold text-sm xs:text-base transition-all duration-300"
+                        >
+                          Details
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            style={{ transform: 'rotate(-45deg)' }}
+                          >
+                            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        </motion.div>
+                      </Link>
                     </div>
-                  </motion.div>
-                </div>
+                  </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -502,16 +536,25 @@ const KeralaTour = () => {
         </div>
       )}
 
-      <style jsx>{`
+      <style jsx global>{`
+        .swiper-pagination-custom {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 24px;
+        }
         .swiper-pagination-bullet {
-          background: rgba(255, 255, 255, 0.8);
-          width: 12px;
-          height: 12px;
+          background-color: #00453A !important;
+          opacity: 0.4;
+          width: 10px !important;
+          height: 10px !important;
+          margin: 0 6px !important;
+          border-radius: 50% !important;
+          transition: all 0.3s ease;
         }
         .swiper-pagination-bullet-active {
-          background: #00453A;
-          width: 14px;
-          height: 14px;
+          opacity: 1 !important;
+          transform: scale(1.2);
         }
         .react-datepicker-wrapper {
           width: 100%;
