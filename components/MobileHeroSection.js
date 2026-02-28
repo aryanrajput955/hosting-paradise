@@ -3,24 +3,31 @@ import Image from 'next/image'
 
 export default function MobileHeroSection() {
   return (
-    <section className="md:hidden block relative min-h-[65vh] h-[65vh] flex items-center justify-center px-3 xs:px-4">
-      <Image
-        src="/img/shoot/pexels-quang-nguyen-vinh-2132174.jpeg"
-        alt="Background"
-        fill
-        className="object-cover object-center -z-10"
-        priority
-        sizes="100vw"
-      />
-      {/* Translucent black overlay */}
-      <div className="absolute inset-0 bg-black/30 z-0"></div>
+    <section className="md:hidden block relative min-h-[65vh] h-[65vh] flex items-center justify-center px-0 xs:px-0 mt-16">
+      {/* Curved, padded background image with white spacing */}
+      <div className="absolute inset-0 flex items-center justify-center z-0">
+        <div className="w-[92%] h-[92%]  rounded-[32px] xs:rounded-[36px]  flex items-center justify-center shadow-2xl">
+          <div className="w-[98%] h-[98%] rounded-[28px] xs:rounded-[32px] overflow-hidden relative">
+            <Image
+              src="/img/shoot/pexels-quang-nguyen-vinh-2132174.jpeg"
+              alt="Background"
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="100vw"
+            />
+            {/* Translucent black overlay */}
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
+        </div>
+      </div>
 
-      {/* Content above the overlay */}
-      <div className="relative flex flex-col items-center justify-center text-center w-full z-10 pt-10 xs:pt-12 px-2 xs:px-3">
+      {/* Content above the curved, padded image */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center w-full z-10 pt-10 xs:pt-12 px-4 xs:px-6">
         {/* Heading */}
         <h1
           style={{ fontFamily: 'salazur' }}
-          className="text-2xl xs:text-3xl font-extrabold mb-3 xs:mb-4 bg-gradient-to-r from-green-200 via-green-100 to-green-100 bg-clip-text text-transparent drop-shadow-2xl leading-tight px-1"
+          className="text-xl xs:text-2xl font-extrabold mb-2 xs:mb-3 bg-gradient-to-r from-green-200 via-green-100 to-green-100 bg-clip-text text-transparent drop-shadow-2xl leading-tight px-5"
         >
           Paradise Bliss Tours — Where Every Journey
           <br className="hidden xs:block" />
@@ -30,10 +37,10 @@ export default function MobileHeroSection() {
         </h1>
 
         {/* Search Bar */}
-        <div className="search-container mx-auto w-full max-w-[280px] xs:max-w-xs mb-4 xs:mb-5 px-1">
-          <div className="search-box bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl p-1.5 xs:p-2 flex items-center gap-1.5 xs:gap-2 shadow-xl border border-white/10">
+        <div className="search-container mx-auto w-full max-w-[260px] xs:max-w-xs mb-3 xs:mb-4 px-1">
+          <div className="search-box bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl p-1 xs:p-1.5 flex items-center gap-1 xs:gap-1.5 shadow-xl border border-white/10">
             <svg
-              className="map-pin-icon w-3.5 h-3.5 xs:w-4 xs:h-4 text-white flex-shrink-0"
+              className="map-pin-icon w-3 h-3 xs:w-3.5 xs:h-3.5 text-white flex-shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -52,7 +59,7 @@ export default function MobileHeroSection() {
               className="search-input bg-transparent text-white placeholder:text-white/70 outline-none flex-grow text-xs xs:text-sm min-w-0"
             />
             <svg
-              className="search-icon w-3.5 h-3.5 xs:w-4 xs:h-4 text-white cursor-pointer flex-shrink-0 hover:scale-110 transition-transform"
+              className="search-icon w-3 h-3 xs:w-3.5 xs:h-3.5 text-white cursor-pointer flex-shrink-0 hover:scale-110 transition-transform"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -67,14 +74,14 @@ export default function MobileHeroSection() {
         </div>
 
         {/* Section Beneath the Search Bar */}
-        <div className="grid grid-cols-2 xs:grid-cols-2 gap-2.5 xs:gap-3 text-center text-white w-full max-w-2xl px-1 xs:px-2">
+        <div className="grid grid-cols-2 xs:grid-cols-2 gap-2 xs:gap-2.5 text-center text-white w-full max-w-xl px-1 xs:px-2">
           <div className="flex flex-col items-center">
             <Image 
               src="/img/location.png" 
               alt="Destination Icon"
               width={56}
               height={56}
-              className="mb-1.5 xs:mb-2 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
+              className="mb-1 xs:mb-1.5 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
               loading="lazy"
             />
             <h2 className="text-base xs:text-lg font-bold mb-0.5 xs:mb-1">100+</h2>
@@ -86,7 +93,7 @@ export default function MobileHeroSection() {
               alt="Happy Travelers Icon"
               width={56}
               height={56}
-              className="mb-1.5 xs:mb-2 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
+              className="mb-1 xs:mb-1.5 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
               loading="lazy"
             />
             <h2 className="text-base xs:text-lg font-bold mb-0.5 xs:mb-1">50K+</h2>
@@ -98,7 +105,7 @@ export default function MobileHeroSection() {
               alt="Ratings Icon"
               width={56}
               height={56}
-              className="mb-1.5 xs:mb-2 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
+              className="mb-1 xs:mb-1.5 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
               loading="lazy"
             />
             <h2 className="text-base xs:text-lg font-bold mb-0.5 xs:mb-1">4.8/5</h2>
@@ -110,7 +117,7 @@ export default function MobileHeroSection() {
               alt="EMI Options Icon"
               width={56}
               height={56}
-              className="mb-1.5 xs:mb-2 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
+              className="mb-1 xs:mb-1.5 w-5 h-5 xs:w-6 xs:h-6 mx-auto object-contain"
               loading="lazy"
             />
             <h2 className="text-base xs:text-lg font-bold mb-0.5 xs:mb-1">No Cost</h2>
